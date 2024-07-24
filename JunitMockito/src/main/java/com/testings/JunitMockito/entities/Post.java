@@ -1,5 +1,9 @@
 package com.testings.JunitMockito.entities;
 
-public record Post(int id, int userId, String title, String body) {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public record Post(@Id int id, int userId, String title, String body) {
 
 }
