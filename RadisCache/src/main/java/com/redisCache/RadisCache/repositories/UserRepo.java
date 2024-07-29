@@ -1,0 +1,8 @@
+package com.redisCache.RadisCache.repositories;
+
+
+import com.redisCache.RadisCache.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepo extends JpaRepository<User, Long> {
+}
