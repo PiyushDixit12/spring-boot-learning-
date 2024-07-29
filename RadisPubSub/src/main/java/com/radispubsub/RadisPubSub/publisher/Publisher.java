@@ -1,2 +1,25 @@
-package com.radispubsub.RadisPubSub.publisher;public class Publisher {
+package com.radispubsub.RadisPubSub.publisher;
+
+import com.radispubsub.RadisPubSub.dto.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class Publisher {
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Autowired
+    private ChannelTopic topic;
+
+    @PostMapping("/publish")
+    public String publish(@RequestBody Product message) {
+        redisTemplate.convertAndSend(topic.getTopic(), message);
+        return "event published";
+    }
+
 }
