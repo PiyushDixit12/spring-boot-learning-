@@ -11,4 +11,5 @@ public class CriteriaQueryApplication {
 		System.out.println("Welcome to spring boot application..");
 	}
 
+
 }

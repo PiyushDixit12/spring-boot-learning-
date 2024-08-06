@@ -33,4 +33,11 @@ public class ProductService {
 //        return productDao.findProductsByNameAndCategory(name, category);
         return  productRepository.findByNameContainingAndCategoryContaining(name,category);
     }
+    public List<Product> getFilteredProducts(String name, String category, Double minPrice, Double maxPrice) {
+        return productDao.filterProducts(name, category, minPrice, maxPrice);
+    }
+
+    public  List<Product> getProductsInRangeById(Integer minId , Integer maxId) {
+        return productDao.getAllProductsOnRangeOfId(minId, maxId);
+    }
 }

@@ -30,4 +30,20 @@ public class ProductController {
         return productService.findByNameAndCategory(productName, productCategory);
     }
 
+    @GetMapping("/products")
+    public List<Product> filterProducts(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice) {
+        return productService.getFilteredProducts(name, category, minPrice, maxPrice);
+    }
+
+
+    @GetMapping(value = "/products/range")
+    public  List<Product> getProductsInRangeById(@RequestParam Integer minId, @RequestParam Integer maxId) {
+        return productService.getProductsInRangeById(minId, maxId);
+    }
+
+
 }
